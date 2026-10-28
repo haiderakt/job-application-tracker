@@ -2,6 +2,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     database_url: str = ""
+    secret_key: str = ""
+    access_token_expire_minutes: int = 30
 
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -14,3 +16,6 @@ settings = Settings()
 
 if not settings.database_url:
     raise ValueError("DATABASE_URL is missing from the environment or .env file")
+
+if not settings.secret_key:
+    raise ValueError("SECRET_KEY is missing")

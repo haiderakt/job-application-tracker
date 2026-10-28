@@ -7,7 +7,7 @@ from app.core.config import settings
 from app.db.base import Base
 
 # Import models here so Alembic can discover their tables.
-# from app.models import ...
+from app import models
 
 config = context.config
 config.set_main_option(
